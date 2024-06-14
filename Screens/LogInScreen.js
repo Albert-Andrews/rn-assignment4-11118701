@@ -7,8 +7,28 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import React from "react";
 
 export default function LongIn({ navigation }) {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [errors, setErrors] = React.useState({});
+
+  const validate = () => {
+    //th validation function checks the form inputs if any of them are being violated
+    const newErrors = {};
+    //check if name is empty
+    if (!name) newErrors = "Please enter your name";
+    //check if email is empty
+    if (!email) newErrors = "Please enter your email";
+    //check if email is valid
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
+      newErrors = "Please enter a valid email";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   return (
     <SafeAreaView style={style.container}>
       <View style={style.main}>
@@ -26,7 +46,10 @@ export default function LongIn({ navigation }) {
             <TextInput placeholder="Email" style={style.emailInput} />
           </View>
 
-          <TouchableOpacity style={style.logInButton}>
+          <TouchableOpacity
+            style={style.logInButton}
+            onPress={() => navigation.navigate("Home")}
+          >
             <Text style={style.logInText}>Log in</Text>
           </TouchableOpacity>
         </View>

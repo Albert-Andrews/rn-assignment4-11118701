@@ -14,7 +14,11 @@ export default function App() {
           component={LongIn}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Home" component={HomePageScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomePageScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
