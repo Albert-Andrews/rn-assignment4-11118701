@@ -8,11 +8,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-export default function LongIn({ navigation }) {
+export default function LongIn() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [errors, setErrors] = React.useState({});
+  //use navigation to be able to navigate and pass params
+  const navigation = useNavigation();
 
   const validate = () => {
     //the validation function checks the form inputs if any of them are being violated
@@ -31,7 +34,7 @@ export default function LongIn({ navigation }) {
 
   const handleSubmit = () => {
     if (validate()) {
-      navigation.navigate("Home");
+      navigation.navigate("Home", { name, email });
       console.log("Form Submitted");
     }
   };
