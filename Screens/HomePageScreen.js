@@ -7,6 +7,7 @@ import {
   TextInput,
   Image,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { Cards } from "../mock/Cards";
 import { PopularCards } from "../mock/PopularCards";
@@ -35,12 +36,12 @@ export default function HomePageScreen({ route }) {
               placeholder="Search a job or position"
             />
           </View>
-          <View style={style.filterContainer}>
+          <TouchableOpacity style={style.filterContainer}>
             <Image
               style={style.filter}
               source={require("../assets/filter5.png")}
             />
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={style.featured}>
@@ -276,7 +277,7 @@ const style = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     height: 80,
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 20,
   },
 
   popularCardContent: {
