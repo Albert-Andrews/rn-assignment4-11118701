@@ -8,12 +8,10 @@ export default function HomePageScreen({ route }) {
   return (
     <SafeAreaView style={style.container}>
       <View style={style.main}>
-        <View >
-          <Text>Welcome,{name} </Text>
-          <Text>{email} </Text>
-          <View>
-
-          </View>
+        <View>
+          <Text style={name}>Welcome,{name} </Text>
+          <Text style={email}>{email} </Text>
+          <View></View>
         </View>
       </View>
     </SafeAreaView>
@@ -31,4 +29,9 @@ const style = StyleSheet.create({
     padding: 20,
     gap: 10,
   },
+  name:{
+    fontSize:24,
+    color:'#0D0D26'
+
+  }
 });
