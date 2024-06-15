@@ -15,7 +15,7 @@ export default function LongIn({ navigation }) {
   const [errors, setErrors] = React.useState({});
 
   const validate = () => {
-    //th validation function checks the form inputs if any of them are being violated
+    //the validation function checks the form inputs if any of them are being violated
     const newErrors = {};
     //check if name is empty
     if (!name) newErrors = "Please enter your name";
@@ -27,6 +27,13 @@ export default function LongIn({ navigation }) {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      navigation.navigate("Home");
+      console.log("Form Submitted");
+    }
   };
 
   return (
@@ -42,14 +49,23 @@ export default function LongIn({ navigation }) {
 
         <View style={style.logInForm}>
           <View style={style.input}>
-            <TextInput placeholder="Name" style={style.nameInput} />
-            <TextInput placeholder="Email" style={style.emailInput} />
+            <TextInput
+              value={name}
+              onChangeText={setName}
+              placeholder="Name"
+              style={style.nameInput}
+            />
+            {errors.name && <Text style={style.error}>{errors.name}</Text>}
+            <TextInput
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Email"
+              style={style.emailInput}
+            />
+            {errors.email && <Text style={style.error}>{errors.email}</Text>}
           </View>
 
-          <TouchableOpacity
-            style={style.logInButton}
-            onPress={() => navigation.navigate("Home")}
-          >
+          <TouchableOpacity style={style.logInButton} onPress={handleSubmit}>
             <Text style={style.logInText}>Log in</Text>
           </TouchableOpacity>
         </View>
@@ -151,6 +167,10 @@ const style = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
   },
+  error: {
+    color: "red",
+    marginBottom: 10,
+  },
   logInButton: {
     backgroundColor: "#356899",
     height: 52,
@@ -219,6 +239,5 @@ const style = StyleSheet.create({
     color: "#356899",
     fontWeight: "500",
     lineHeight: 22.4,
-    fontStyle: "normal",
   },
 });
