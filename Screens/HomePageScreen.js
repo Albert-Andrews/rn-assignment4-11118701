@@ -9,6 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import { Cards } from "../mock/Cards";
+import { PopularCards } from "../mock/PopularCards";
 
 export default function HomePageScreen({ route }) {
   //function to watch the inputed values
@@ -80,6 +81,33 @@ export default function HomePageScreen({ route }) {
             showsHorizontalScrollIndicator={false}
           />
         </View>
+
+        <View>
+          <View style={style.featuredText}>
+            <Text style={style.featuredTitle}>Popular Jobs</Text>
+            <Text style={style.seeAll}>See all</Text>
+          </View>
+
+          <FlatList
+            data={PopularCards}
+            renderItem={({ item }) => (
+              <View style={style.popularCard}>
+                <View style={style.popularCardContent}>
+                  <Image style={style.popularCardImage} source={item.image} />
+                  <View>
+                    <Text style={style.popularCardTitle}>{item.title}</Text>
+                    <Text style={style.popularCardsubText}>{item.text}</Text>
+                  </View>
+                </View>
+
+                <View>
+                  <Text style={style.popularCardSalary}>${item.salary}/y</Text>
+                  <Text style={style.popularCardLocation}>{item.location}</Text>
+                </View>
+              </View>
+            )}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -94,11 +122,18 @@ const style = StyleSheet.create({
   main: {
     flex: 1,
     padding: 20,
-    gap: 25,
+    gap: 30,
   },
   name: {
     fontSize: 24,
     color: "#0D0D26",
+    fontWeight: "700",
+  },
+
+  email: {
+    fontSize: 14,
+    color: "#95969D",
+    fontWeight: "400",
   },
 
   filtering: {
@@ -228,6 +263,60 @@ const style = StyleSheet.create({
     fontSize: 15,
     fontWeight: 500,
     color: "#FFFFFF",
+    lineHeight: 24,
+    opacity: 0.6,
+  },
+
+  popularCard: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
+    marginVertical: 10,
+    backgroundColor: "#FFFFFF",
+    height: 80,
+    padding: 15,
+    borderRadius: 10,
+  },
+
+  popularCardContent: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+  },
+
+  popularCardImage: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+  },
+
+  popularCardText: {
+    flexDirection: "column",
+    gap: 5,
+  },
+  popularCardTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    lineHeight: 20.6,
+    color: "#0D0D26",
+  },
+  popularCardsubText: {
+    fontSize: 13,
+    fontWeight: "400",
+    lineHeight: 21,
+    color: "#95969D",
+  },
+  popularCardSalary: {
+    fontSize: 15,
+    fontWeight: "500",
+    lineHeight: 24,
+    color: "#0D0D26",
+  },
+  popularCardLocation: {
+    fontSize: 15,
+    fontWeight: 500,
+    color: "#95969D",
     lineHeight: 24,
     opacity: 0.6,
   },
