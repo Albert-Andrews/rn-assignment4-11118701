@@ -19,10 +19,16 @@ export default function HomePageScreen({ route }) {
   return (
     <SafeAreaView style={style.container}>
       <View style={style.main}>
-        <View>
-          <Text style={style.name}>Welcome,{name} </Text>
-          <Text style={style.email}>{email} </Text>
-          <View></View>
+        <View style={style.header}>
+          <View>
+            <Text style={style.name}>Welcome,{name} </Text>
+            <Text style={style.email}>{email} </Text>
+          </View>
+
+          <View style={style.avatarContainer}>
+            <Image style={style.avatar} source={require("../assets/_.jpeg")} />
+            <View style={style.insetRadio} />
+          </View>
         </View>
 
         <View style={style.filtering}>
@@ -125,6 +131,13 @@ const style = StyleSheet.create({
     padding: 20,
     gap: 30,
   },
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
+  },
   name: {
     fontSize: 24,
     color: "#0D0D26",
@@ -135,6 +148,23 @@ const style = StyleSheet.create({
     fontSize: 14,
     color: "#95969D",
     fontWeight: "400",
+  },
+
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 100,
+  },
+  insetRadio: {
+    backgroundColor: "red",
+    height: 8,
+    width: 8,
+    borderRadius: 100,
+    padding: 2,
+    position: "absolute",
+    right: 1,
+    top: 4,
+    inset: 0,
   },
 
   filtering: {

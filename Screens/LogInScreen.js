@@ -45,7 +45,7 @@ export default function LongIn() {
         <View style={style.JobizzContainer}>
           <Text style={style.Jobizz}>Jobizz</Text>
           <View>
-            <Text style={style.welcomeText}>Welcome Back,</Text>
+            <Text style={style.welcomeText}>Welcome Back 👋</Text>
             <Text style={style.subText}>Let's Log in. Apply to jobs!</Text>
           </View>
         </View>
