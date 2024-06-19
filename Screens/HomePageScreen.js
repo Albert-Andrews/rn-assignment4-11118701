@@ -57,7 +57,7 @@ export default function HomePageScreen({ route }) {
           </View>
 
           <FlatList
-            style={style.featuredList}
+            style={style.featured}
             data={Cards}
             renderItem={({ item }) => (
               <View style={[style.card, { backgroundColor: item.color }]}>
@@ -89,14 +89,13 @@ export default function HomePageScreen({ route }) {
           />
         </View>
 
-        <View>
+        <View style={style.popular}>
           <View style={style.featuredText}>
             <Text style={style.featuredTitle}>Popular Jobs</Text>
             <Text style={style.seeAll}>See all</Text>
           </View>
-          <View>
+          <View style={style.popularCard}>
             <FlatList
-              style={style.popularCardContainer}
               data={PopularCards}
               renderItem={({ item }) => (
                 <View style={style.popularCard}>
@@ -134,7 +133,6 @@ const style = StyleSheet.create({
 
   main: {
     flex: 1,
-    padding: 20,
     gap: 30,
   },
 
@@ -143,6 +141,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     gap: 10,
+    marginHorizontal: 20,
   },
   name: {
     fontSize: 24,
@@ -177,6 +176,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignContent: "center",
+    marginHorizontal: 20,
   },
 
   searchContainer: {
@@ -212,10 +212,15 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  featured: {
+    marginHorizontal: 10,
+  },
+
   featuredText: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginHorizontal: 20,
   },
 
   featuredTitle: {
@@ -239,7 +244,6 @@ const style = StyleSheet.create({
     opacity: 6,
     marginTop: 20,
     justifyContent: "space-between",
-    zIndex: -100,
   },
 
   cardContent: {
@@ -304,8 +308,8 @@ const style = StyleSheet.create({
     opacity: 0.6,
   },
 
-  popularCardContainer: {
-    marginBottom: 20,
+  popular: {
+    flex: 1,
   },
 
   popularCard: {
@@ -315,7 +319,6 @@ const style = StyleSheet.create({
     gap: 10,
     marginVertical: 10,
     backgroundColor: "#FFFFFF",
-    height: 80,
     padding: 15,
     borderRadius: 20,
   },
