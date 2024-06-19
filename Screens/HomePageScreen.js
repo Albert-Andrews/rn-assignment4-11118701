@@ -90,11 +90,11 @@ export default function HomePageScreen({ route }) {
         </View>
 
         <View style={style.popular}>
-          <View style={style.featuredText}>
+          <View style={style.popularText}>
             <Text style={style.featuredTitle}>Popular Jobs</Text>
             <Text style={style.seeAll}>See all</Text>
           </View>
-          <View style={style.popularCard}>
+          <View style={style.popularCardContainer}>
             <FlatList
               data={PopularCards}
               renderItem={({ item }) => (
@@ -141,6 +141,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     gap: 10,
+    marginTop: 10,
     marginHorizontal: 20,
   },
   name: {
@@ -212,10 +213,6 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  featured: {
-    marginHorizontal: 10,
-  },
-
   featuredText: {
     flexDirection: "row",
     alignItems: "center",
@@ -236,7 +233,8 @@ const style = StyleSheet.create({
     color: "#95969D",
   },
   card: {
-    marginRight: 20,
+    marginRight: 10,
+    marginLeft: 15,
     padding: 15,
     width: 300,
     height: 186,
@@ -310,6 +308,29 @@ const style = StyleSheet.create({
 
   popular: {
     flex: 1,
+    backgroundColor: "#FAFAFD",
+    marginHorizontal: 20,
+    marginBottom: 20,
+  },
+
+  popularText: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginHorizontal: 10,
+    marginVertical: 10,
+  },
+  popularTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    lineHeight: 20.8,
+    color: "#0D0D26",
+  },
+  popularSeeAll: {
+    fontSize: 14,
+    fontWeight: "400",
+    lineHeight: 16.8,
+    color: "#95969D",
   },
 
   popularCard: {
@@ -317,7 +338,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     gap: 10,
-    marginVertical: 10,
+    marginVertical: 5,
     backgroundColor: "#FFFFFF",
     padding: 15,
     borderRadius: 20,
