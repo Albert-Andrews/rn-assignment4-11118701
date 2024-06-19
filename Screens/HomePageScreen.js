@@ -94,26 +94,32 @@ export default function HomePageScreen({ route }) {
             <Text style={style.featuredTitle}>Popular Jobs</Text>
             <Text style={style.seeAll}>See all</Text>
           </View>
+          <View>
+            <FlatList
+              style={style.popularCardContainer}
+              data={PopularCards}
+              renderItem={({ item }) => (
+                <View style={style.popularCard}>
+                  <View style={style.popularCardContent}>
+                    <Image style={style.popularCardImage} source={item.image} />
+                    <View>
+                      <Text style={style.popularCardTitle}>{item.title}</Text>
+                      <Text style={style.popularCardsubText}>{item.text}</Text>
+                    </View>
+                  </View>
 
-          <FlatList
-            data={PopularCards}
-            renderItem={({ item }) => (
-              <View style={style.popularCard}>
-                <View style={style.popularCardContent}>
-                  <Image style={style.popularCardImage} source={item.image} />
                   <View>
-                    <Text style={style.popularCardTitle}>{item.title}</Text>
-                    <Text style={style.popularCardsubText}>{item.text}</Text>
+                    <Text style={style.popularCardSalary}>
+                      ${item.salary}/y
+                    </Text>
+                    <Text style={style.popularCardLocation}>
+                      {item.location}
+                    </Text>
                   </View>
                 </View>
-
-                <View>
-                  <Text style={style.popularCardSalary}>${item.salary}/y</Text>
-                  <Text style={style.popularCardLocation}>{item.location}</Text>
-                </View>
-              </View>
-            )}
-          />
+              )}
+            />
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -296,6 +302,10 @@ const style = StyleSheet.create({
     color: "#FFFFFF",
     lineHeight: 24,
     opacity: 0.6,
+  },
+
+  popularCardContainer: {
+    marginBottom: 20,
   },
 
   popularCard: {
